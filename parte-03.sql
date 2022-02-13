@@ -1,3 +1,5 @@
+--aplicando selects
+
 -- select 1
 SELECT * FROM enderecos;
 	
@@ -15,30 +17,30 @@ ORDER BY e.id;
 --select 3
 
 SELECT 
-	rs.id ,rs.nome, u.id, u.nome, email, senha, endereco_id  
+	rs.*, u.*  
 FROM 
 	redes_sociais rs 
 JOIN 
-	usuario_rede_sociais urs 
-	ON urs.id = rs.id
+	usuario_rede_sociais AS urs 
+	ON urs.rede_social_id  = rs.id
 JOIN usuarios u 
-	ON u.id = urs.id ;
+	ON u.id = urs.usuario_id ;
 	
 -- select 4
 	
 SELECT 
-	*
+	rs.*, u.*, e.*
 FROM 
 	redes_sociais rs 
 JOIN 
 	usuario_rede_sociais urs 
-	ON urs.id = rs.id
+	ON urs.rede_social_id  = rs.id
 JOIN 
 	usuarios u 
-	ON u.id = urs.id 
+	ON u.id = urs.usuario_id  
 JOIN 
 	enderecos e
-	ON e.id = u.id ;
+	ON e.id = u.endereco_id  ;
 
 -- select 5
 
@@ -48,13 +50,13 @@ FROM
 	redes_sociais rs 
 JOIN 
 	usuario_rede_sociais urs 
-	ON urs.id = rs.id
+	ON urs.rede_social_id  = rs.id
 JOIN 
 	usuarios u 
-	ON u.id = urs.id 
+	ON u.id = urs.usuario_id 
 JOIN 
 	enderecos e
-	ON e.id = u.id ;
+	ON e.id = u.endereco_id  ;
 
 -- select 6
 
@@ -64,13 +66,13 @@ FROM
 	redes_sociais rs 
 JOIN 
 	usuario_rede_sociais urs 
-	ON urs.id = rs.id
+	ON urs.rede_social_id  = rs.id
 JOIN 
 	usuarios u 
-	ON u.id = urs.id 
+	ON u.id = urs.usuario_id  
 JOIN 
 	enderecos e
-	ON e.id = u.id 
+	ON e.id = u.endereco_id 
 WHERE rs.nome = 'Youtube';
 
 -- select 7
@@ -81,13 +83,13 @@ FROM
 	redes_sociais rs 
 JOIN 
 	usuario_rede_sociais urs 
-	ON urs.id = rs.id
+	ON urs.rede_social_id  = rs.id
 JOIN 
 	usuarios u 
-	ON u.id = urs.id 
+	ON u.id = urs.usuario_id  
 JOIN 
 	enderecos e
-	ON e.id = u.id 
+	ON e.id = u.endereco_id  
 WHERE rs.nome = 'Instagram';
 
 -- select 8
@@ -104,8 +106,9 @@ JOIN
 	ON u.id = urs.usuario_id 
 JOIN 
 	enderecos e
-	ON e.id = u.id 
+	ON e.id = u.endereco_id  
 WHERE rs.nome = 'Facebook';
+
 
 -- select 9
 
@@ -121,7 +124,7 @@ JOIN
 	ON u.id = urs.usuario_id 
 JOIN 
 	enderecos e
-	ON e.id = u.id 
+	ON e.id = u.endereco_id  
 WHERE rs.nome = 'TikTok';
 
 -- select 10 
@@ -138,5 +141,5 @@ JOIN
 	ON u.id = urs.usuario_id 
 JOIN 
 	enderecos e
-	ON e.id = u.id 
+	ON e.id = u.endereco_id 
 WHERE rs.nome = 'Twitter';
